@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+</head>
+<body>
+
+    <!-- Elemen audio -->
+    <audio id="local-audio" src="https://raw.githubusercontent.com/Wedding-Invitation-DP/wedding-invitation/master/images/audio/your-audio-file.mp3" preload="auto" controls></audio>
+
+    <script>
+        // Ambil elemen audio
+        var audioElement = document.getElementById("local-audio");
+
+        // Fungsi untuk memutar audio saat halaman dimuat
+        window.onload = function() {
+            audioElement.play();
+        };
+    </script>
+
+</body>
+</html>
