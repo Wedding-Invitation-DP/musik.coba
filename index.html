@@ -3,20 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Player</title>
+    <title>Audio Player with Controls</title>
+    <style>
+        .audio-controls {
+            margin-top: 20px;
+        }
+        #audio-icon {
+            cursor: pointer;
+            width: 50px; /* Ukuran ikon */
+            height: 50px; /* Ukuran ikon */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Elemen audio dengan autoplay -->
     <audio id="local-audio" src="https://raw.githubusercontent.com/Wedding-Invitation-DP/wedding-invitation/master/images/audio/your-audio-file.mp3" preload="auto" autoplay loop></audio>
 
+    <!-- Kontrol audio -->
+    <div class="audio-controls">
+        <img id="audio-icon" src="https://hairullana.github.io/wedding/images/audio/pause.png" alt="Play/Pause" onclick="toggleAudio()" />
+    </div>
+
     <script>
         // Ambil elemen audio
         var audioElement = document.getElementById("local-audio");
 
+        // Fungsi untuk mengubah ikon play/pause
+        function togglePlayButton(play) {
+            var iconPath = play ? "https://hairullana.github.io/wedding/images/audio/pause.png" : "https://hairullana.github.io/wedding/images/audio/play.png";
+            document.getElementById("audio-icon").src = iconPath;
+        }
+
+        // Fungsi untuk mengontrol audio
+        function toggleAudio() {
+            if (audioElement.paused) {
+                audioElement.play();
+                togglePlayButton(true);
+            } else {
+                audioElement.pause();
+                togglePlayButton(false);
+            }
+        }
+
         // Memastikan audio dimulai saat halaman dimuat
         window.onload = function() {
             audioElement.play();
+            togglePlayButton(true); // Set ikon ke pause saat audio mulai diputar
         };
     </script>
 
